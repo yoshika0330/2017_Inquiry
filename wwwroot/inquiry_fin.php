@@ -1,5 +1,9 @@
 <?php
 
+//
+ob_start();
+session_start();
+
 // 入力された情報を取得
 /*
 $email = (string)@$_POST['email'];
@@ -45,8 +49,15 @@ if ('' !== $input_date['birthday']){
 
 // エラー判定
 if (array() != $error_detail){
-var_dump($error_detail);
-  echo 'エラー出現';
+    // エラー内容をセッションに保持する
+    $_SESSION['buffer']['error_detail'] = $error_detail; 
+    // 入力情報をセッションに保持する
+    $_SESSION['buffer']['input'] = $input_detail; 
+//
+//var_dump($error_detail);
+  //echo 'エラー出現';
+  // 入力ページに戻す
+  header('Location: ./inquiry.php');
   exit;
 }
 // ダミー
