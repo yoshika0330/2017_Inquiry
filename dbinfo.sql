@@ -9,3 +9,16 @@ CREATE TABLE inquirys(
  PRIMARY KEY (`inquiry_id`)
 )CHARACTER SET 'utf8mb4', ENGINE=InnoDB, COMMENT='1レコードが「一件の問い合わせ」を意味するテーブル';
 
+-- 管理者用テーブル
+DROP TABLE IF EXISTS admin_users;
+CREATE TABLE admin_users (
+  admin_user_id varbinary(64) NOT NULL COMMENT '管理者のID',
+  pass varbinary(255) NOT NULL COMMENT '管理者のパスワード',
+  PRIMARY KEY (`admin_user_id`)
+)CHARACTER SET 'utf8mb4'
+, ENGINE=InnoDB
+, COMMENT='１レコードが１管理者を意味するテーブル';
+-- ダミーの管理者
+
+
+
